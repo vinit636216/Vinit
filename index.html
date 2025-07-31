@@ -10,6 +10,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
 <style>
 @font-face {
 font-family: 'Monument extended';
@@ -62,6 +63,10 @@ line-height: 1;
 .featured-works-heading {
     font-size: 3rem;
     text-align: center;
+}
+#folders-responsive{
+    display: flex;
+    flex-direction: column;
 }
 }
 
@@ -377,7 +382,7 @@ I CREATE DESIGNS THAT DON'T JUST LOOK GOOD, THEY ADD REAL VALUE
     linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
 background-size: 50px 50px;">
-<div class="container mx-auto px-4">
+<div id="folders-responsive" class="container mx-auto px-4">
 <h1 class="featured-works-heading">FEATURED <br>WORKS</h1>
 <!-- Changed grid to flex for horizontal scrolling -->
 <div class="flex flex-nowrap overflow-x-auto space-x-8 pb-4">
@@ -408,9 +413,7 @@ style="--folder-color: #ff7824;"
 data-title="App design"
 data-description="Designed a highly engaging mobile application for a Watch Store and Hostel, employing a robust user-centered design methodology. My process encompassed the full spectrum of design, from initial wireframing and iterative prototyping to high-fidelity mockups, with a strong emphasis on integrating gamification elements and personalized user journeys to maximize engagement and satisfaction."
 data-media='[
-    {"type": "image", "src": "source/watch app design nobg.png", "link": "https://www.figma.com/proto/QcrNd33DyxmvVjM65gklJx/watch-app?page-id=0%3A1&node-id=6-132&viewport=8%2C61%2C0.16&t=qeLMqAH1wbvl550W-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=6%3A132"},
     {"type": "image", "src": "source/watch app design.png", "link": "https://www.figma.com/proto/QcrNd33DyxmvVjM65gklJx/watch-app?page-id=0%3A1&node-id=6-132&viewport=8%2C61%2C0.16&t=qeLMqAH1wbvl550W-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=6%3A132"},
-    {"type": "image", "src": "source/hostel app nobg.png", "link": "https://www.figma.com/proto/XT9IxMdmIZOO3DtQZpBJjR/Hostel-app-prototype?page-id=0%3A1&node-id=1-560&viewport=588%2C522%2C0.17&t=If419DSkHcdRJA1b-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1%3A2407"},
     {"type": "image", "src": "source/hostel app.png", "link": "https://www.figma.com/proto/XT9IxMdmIZOO3DtQZpBJjR/Hostel-app-prototype?page-id=0%3A1&node-id=1-560&viewport=588%2C522%2C0.17&t=If419DSkHcdRJA1b-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1%3A2407"}
 ]'>
 <p class="folder-title" style="color: #FFFFFF !important;">App design</p>
@@ -596,7 +599,7 @@ navLinks.classList.toggle('absolute');
 navLinks.classList.toggle('top-full');
 navLinks.classList.toggle('left-0');
 navLinks.classList.toggle('w-full');
-navLinks.classList.toggle('bg-black'); /* Changed to black for consistency */
+navLinks.classList.toggle('bg-black');
 navLinks.classList.toggle('shadow-md');
 navLinks.classList.toggle('py-4');
 navLinks.classList.toggle('items-center');
@@ -604,7 +607,6 @@ navLinks.classList.toggle('space-x-0');
 navLinks.classList.toggle('space-y-4');
 });
 
-// Close mobile menu when a link is clicked
 navLinks.querySelectorAll('a').forEach(link => {
 link.addEventListener('click', () => {
 if (!navLinks.classList.contains('hidden')) {
@@ -632,7 +634,7 @@ el.style.setProperty("--light-radius", `${lightRadius}px`);
 
 heroTextWrapper.addEventListener("mouseleave", () => {
 heroTexts.forEach((el) => {
-el.classList.remove("active"); // Revert to grey
+el.classList.remove("active");
 el.style.setProperty("--light-radius", "0px");
 });
 });
@@ -715,7 +717,6 @@ projectMedia.forEach((media, index) => {
 currentMediaIndex = 0; // Reset to first media item
 showMedia(currentMediaIndex); // Display the first media item and set its link
 
-// Show/hide navigation buttons based on number of media items
 if (projectMedia.length > 1) {
     modalPrevButton.style.display = 'block';
     modalNextButton.style.display = 'block';
@@ -728,13 +729,10 @@ if (projectMedia.length > 1) {
 };
 
 folderCards.forEach(card => {
-// Only attach click listener to cards that are NOT Behance or My sketches, as they have direct links
 if(card.dataset.title !== 'My sketches' && card.dataset.title !== 'Behance'){
     card.addEventListener('click', () => {
         const title = card.dataset.title;
         const description = card.dataset.description;
-        // Note: The main card's data-link is now ignored for the modal's button,
-        // as the button's link will be dynamically set by the carousel's current media.
         const media = JSON.parse(card.dataset.media || '[]'); // Parse media JSON
 
         modalTitle.textContent = title;
@@ -768,7 +766,7 @@ projectModal.classList.remove('show');
 modalMediaWrapper.querySelectorAll('video').forEach(video => video.pause());
 setTimeout(() => {
 projectModal.classList.add('hidden');
-}, 300); // Match CSS transition duration
+}, 300);
 };
 
 closeModalButton.addEventListener('click', closeProjectModal);
@@ -780,10 +778,9 @@ closeProjectModal();
 }
 });
 
-// Swipe functionality for modal media
 let startX = 0;
 let isSwiping = false;
-const swipeThreshold = 50; // Minimum distance for a swipe
+const swipeThreshold = 50;
 
 modalMediaWrapper.addEventListener('touchstart', (e) => {
 startX = e.touches[0].clientX;
@@ -794,8 +791,6 @@ modalMediaWrapper.addEventListener('touchmove', (e) => {
 if (!isSwiping) return;
 const currentX = e.touches[0].clientX;
 const diffX = startX - currentX;
-// Optional: Provide visual feedback during swipe (e.g., slight drag)
-// modalMediaWrapper.style.transform = `translateX(${-currentMediaIndex * 100 - (diffX / modalMediaWrapper.offsetWidth) * 100}%)`;
 });
 
 modalMediaWrapper.addEventListener('touchend', (e) => {
