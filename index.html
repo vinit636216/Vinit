@@ -10,8 +10,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Michroma&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-<!-- Three.js CDN (removed as cube is replaced) -->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script> -->
 <style>
 @font-face {
 font-family: 'Monument extended';
@@ -205,14 +203,14 @@ transform: scale(1);
 /* About Me Image Box Styles */
 #about-me-image-box {
 width: 100%;
-max-width: 400px;
+max-width: 500px;
 height: min-content;
 display: flex;
 justify-content: center;
 align-items: center;
 border-radius: 0.5rem;
 overflow: hidden;
-background-color: #baa369; /* Changed background color to a darker grey */
+background-color: #ffffff; /* Changed background color to a darker grey */
 box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 /* Removed padding: 1rem; */
 }
@@ -394,15 +392,28 @@ data-media='[
 ]'>
 <p class="folder-title">ServiceNow<br>Portals</p>
 </div>
-<!-- Portfolio Item 2: App design -->
+<!-- Portfolio Item 2: Web Design -->
 <div class="folder-card shadow-md transition-shadow duration-300"
 style="--folder-color: #FDC959;"
 data-title="App design"
-data-description="Designed a highly engaging mobile application for a fitness startup, leading to a 25% increase in daily active users within the first three months. Employed user-centered design principles, from wireframing to high-fidelity prototyping, focusing on gamification and personalized user journeys."
+data-description="Designed a highly engaging website for a startup, applying a comprehensive user-centered design approach. This involved everything from initial wireframing and iterative prototyping to high-fidelity mockups, strategically incorporating gamification elements and personalized user journeys to significantly enhance user engagement and drive a 25% increase in daily active users within the first three months"
 data-media='[
     {"type": "image", "src": "source/ZEWORK.png", "link": "https://www.figma.com/proto/Asm0IckxXMbV8Z8PmxoewF/Ze-work?page-id=0%3A1&node-id=295-173&scaling=scale-down-width&content-scaling=fixed&t=tZtMvtGLZIKksrAX-1"}
 ]'>
-<p class="folder-title">App design</p>
+<p class="folder-title">Web Design</p>
+</div>
+<!-- Portfolio Item 2: App design -->
+<div class="folder-card shadow-md transition-shadow duration-300"
+style="--folder-color: #ff7824;"
+data-title="App design"
+data-description="Designed a highly engaging mobile application for a Watch Store and Hostel, employing a robust user-centered design methodology. My process encompassed the full spectrum of design, from initial wireframing and iterative prototyping to high-fidelity mockups, with a strong emphasis on integrating gamification elements and personalized user journeys to maximize engagement and satisfaction."
+data-media='[
+    {"type": "image", "src": "source/watch app design nobg.png", "link": "https://www.figma.com/proto/QcrNd33DyxmvVjM65gklJx/watch-app?page-id=0%3A1&node-id=6-132&viewport=8%2C61%2C0.16&t=qeLMqAH1wbvl550W-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=6%3A132"},
+    {"type": "image", "src": "source/watch app design.png", "link": "https://www.figma.com/proto/QcrNd33DyxmvVjM65gklJx/watch-app?page-id=0%3A1&node-id=6-132&viewport=8%2C61%2C0.16&t=qeLMqAH1wbvl550W-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=6%3A132"},
+    {"type": "image", "src": "source/hostel app nobg.png", "link": "https://www.figma.com/proto/XT9IxMdmIZOO3DtQZpBJjR/Hostel-app-prototype?page-id=0%3A1&node-id=1-560&viewport=588%2C522%2C0.17&t=If419DSkHcdRJA1b-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1%3A2407"},
+    {"type": "image", "src": "source/hostel app.png", "link": "https://www.figma.com/proto/XT9IxMdmIZOO3DtQZpBJjR/Hostel-app-prototype?page-id=0%3A1&node-id=1-560&viewport=588%2C522%2C0.17&t=If419DSkHcdRJA1b-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=1%3A2407"}
+]'>
+<p class="folder-title" style="color: #FFFFFF !important;">App design</p>
 </div>
 <!-- Portfolio Item 3: Graphic Design -->
 <div class="folder-card shadow-md transition-shadow duration-300"
@@ -850,10 +861,6 @@ showMedia(currentMediaIndex); // Reset position
 }
 });
 
-
-// No Three.js for About Me section anymore.
-// The previous window.onload function for the cube has been removed.
-
 // Intersection Observer for scroll animations
 document.addEventListener('DOMContentLoaded', () => {
 const animatedElements = document.querySelectorAll('.scroll-animate');
@@ -896,7 +903,6 @@ const body = encodeURIComponent(
 
 window.location.href = `mailto:vvinit848@gmail.com?subject=${subject}&body=${body}`;
 
-// Optionally, clear the form after submission attempt
 contactForm.reset();
 });
 
