@@ -1,0 +1,154 @@
+// Prisma schema for Vinit V Balgum portfolio
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model AdminUser {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String
+  updatedAt    DateTime @updatedAt
+  createdAt    DateTime @default(now())
+}
+
+model Profile {
+  id                    String   @id @default("singleton")
+  name                  String
+  displayName           String
+  role                  String
+  tagline               String   @db.Text
+  bioShort              String   @db.Text
+  bioLong               String   @db.Text
+  heroPhotoUrl          String?
+  aboutPhotoUrls        String[]
+  behindScenesPhotoUrl  String?
+  behindScenesVideoUrl  String?
+  resumeUrl             String?
+  email                 String
+  phone                 String?
+  location              String?
+  dribbbleUrl           String?
+  behanceUrl            String?
+  linkedinUrl           String?
+  instagramUrl          String?
+  githubUrl             String?
+  copyrightYear         Int      @default(2026)
+  updatedAt             DateTime @updatedAt
+}
+
+model Stat {
+  id     String @id @default(cuid())
+  label  String
+  value  Int
+  suffix String?
+  order  Int    @default(0)
+}
+
+model Service {
+  id          String  @id @default(cuid())
+  number      Int
+  title       String
+  description String  @db.Text
+  tags        String[]
+  imageUrl    String?
+  projectUrl  String?
+  order       Int     @default(0)
+}
+
+model Project {
+  id            String   @id @default(cuid())
+  title         String
+  slug          String   @unique
+  category      String
+  type          String?
+  description   String?  @db.Text
+  coverImageUrl String
+  galleryUrls   String[]
+  tags          String[]
+  externalUrl   String?
+  featured      Boolean  @default(false)
+  order         Int      @default(0)
+  createdAt     DateTime @default(now())
+}
+
+model Testimonial {
+  id        String @id @default(cuid())
+  name      String
+  role      String
+  avatarUrl String?
+  quote     String @db.Text
+  rating    Int    @default(5)
+  order     Int    @default(0)
+}
+
+model ExperienceEntry {
+  id          String    @id @default(cuid())
+  company     String
+  role        String
+  startDate   DateTime
+  endDate     DateTime?
+  description String?   @db.Text
+  photoUrl    String?
+  order       Int       @default(0)
+}
+
+model PartnerLogo {
+  id      String @id @default(cuid())
+  name    String
+  logoUrl String
+  linkUrl String?
+  section String @default("trusted")
+  order   Int    @default(0)
+}
+
+model Achievement {
+  id          String  @id @default(cuid())
+  title       String
+  issuer      String?
+  year        Int?
+  description String? @db.Text
+  order       Int     @default(0)
+}
+
+model FaqItem {
+  id       String @id @default(cuid())
+  question String
+  answer   String @db.Text
+  order    Int    @default(0)
+}
+
+model BlogPost {
+  id            String    @id @default(cuid())
+  title         String
+  slug          String    @unique
+  category      String
+  excerpt       String?   @db.Text
+  content       String    @db.Text
+  coverImageUrl String?
+  author        String    @default("Vinit V Balgum")
+  published     Boolean   @default(false)
+  publishedAt   DateTime?
+  createdAt     DateTime  @default(now())
+}
+
+model NewsletterSubscriber {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
+}
+
+model ContactSubmission {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  message   String   @db.Text
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
